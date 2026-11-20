@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#090b14">
+  <title>LIVE WORLD 3D</title>
+  <link rel="stylesheet" href="/style.css">
+  <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.187.0/build/three.module.js"}}
+  </script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">LW</span><div><strong>LIVE WORLD <i>3D</i></strong><small>SEU PALCO. SUA LIVE. SEU MUNDO.</small></div></div>
+      <div class="live-pill"><span class="pulse"></span><span id="statusText">DESCONECTADO</span></div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow">CENTRAL DE CONTROLE</div>
+        <h1>Seu universo <span>ao vivo.</span></h1>
+        <p>Conecte uma LIVE pública do TikTok e veja os espectadores entrarem no seu palco 3D.</p>
+      </section>
+
+      <section class="connect-card">
+        <div class="section-heading"><div><span class="step">01</span><h2>Conectar TikTok LIVE</h2></div><span class="secure">CONEXÃO PELO BACKEND</span></div>
+        <form id="connectForm">
+          <label for="username">NOME DE USUÁRIO DO TIKTOK</label>
+          <div class="input-row"><span class="at">@</span><input id="username" name="username" placeholder="seuusuario" autocomplete="off" autocapitalize="none" required><button id="connectBtn" type="submit">CONECTAR <span>↗</span></button></div>
+        </form>
+        <div class="connection-note" id="connectionNote">Digite o @ da conta que está transmitindo ao vivo. Não precisa colocar senha.</div>
+        <div class="error-box" id="errorBox" hidden></div>
+      </section>
+
+      <section class="stage-card">
+        <div class="stage-head"><div><span class="step">02</span><h2>Palco 3D</h2></div><div class="stage-actions"><span id="avatarCount">0 PERSONAGENS</span><button id="resetCamera" class="ghost-btn" type="button">CENTRALIZAR CÂMERA</button></div></div>
+        <div id="stage">
+          <div class="stage-overlay"><span class="stage-tag">LIVE WORLD ARENA</span><span class="stage-hint">Os personagens aparecem aqui quando espectadores entram.</span></div>
+          <div id="loading3d" class="loading3d">CARREGANDO PALCO 3D…</div>
+        </div>
+        <div class="stage-footer"><span><b class="legend-dot"></b> PERSONAGENS ATIVOS</span><span>ANIMAÇÃO EM TEMPO REAL</span></div>
+      </section>
+
+      <section class="bottom-grid">
+        <div class="panel">
+          <div class="panel-title"><span class="step">03</span><h2>Eventos da LIVE</h2><span class="live-count" id="eventCount">0</span></div>
+          <div id="events" class="events"><div class="empty-state">Aguardando eventos da transmissão…</div></div>
+        </div>
+        <div class="panel">
+          <div class="panel-title"><span class="step">04</span><h2>Estatísticas</h2></div>
+          <div class="stats">
+            <div><strong id="viewers">—</strong><small>ESPECTADORES DETECTADOS</small></div>
+            <div><strong id="gifts">0</strong><small>PRESENTES RECEBIDOS</small></div>
+            <div><strong id="likes">0</strong><small>CURTIDAS RECEBIDAS</small></div>
+          </div>
+          <div class="music-note">♫ <span>MÚSICAS PRÓPRIAS</span><small>Adicione suas faixas na próxima etapa de configuração do palco.</small></div>
+        </div>
+      </section>
+      <footer>LIVE WORLD 3D <span>•</span> O conector de eventos é não oficial e depende da disponibilidade do TikTok.</footer>
+    </main>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
